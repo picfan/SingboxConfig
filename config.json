@@ -1,0 +1,813 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "info",
+        "output": "box.log",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "foreign",
+                "address": "tls://dns.google",
+                "address_resolver": "foreignDNS",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "foreign",
+                "address": "https://1.1.1.1/dns-query",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "foreignDNS",
+                "address": "1.1.1.1",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "domestic",
+                "address": "223.5.5.5",
+                "strategy": "ipv4_only",
+                "detour": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "tag": "domestic",
+                "address": "119.29.29.29",
+                "strategy": "ipv4_only",
+                "detour": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://refused"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "foreign",
+                "disable_cache": true
+            },
+            {
+                "rule_set": "geosite-cn",
+                "server": "domestic"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "domestic"
+            },
+            {
+                "clash_mode": "global",
+                "server": "foreign"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "server": "foreign"
+            }
+        ],
+        "final": "foreign",
+        "strategy": "ipv4_only",
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "reverse_mapping": false
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.18.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "sniff": true,
+            "endpoint_independent_nat": false,
+            "stack": "mixed",
+            "platform": {
+                "http_proxy": {
+                    "enabled": false,
+                    "server": "127.0.0.1",
+                    "server_port": 8080,
+                    "bypass_domain": [],
+                    "match_domain": []
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "🚀 NODE SELECTION",
+            "type": "selector",
+            "outbounds": [
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "♻️ AUTOMATIC SELECTION",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🐸 MANUAL SWITCH",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ]
+        },
+        {
+            "tag": "👻 Bilibili",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🎃 YouTube",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🌌 Google",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🌀 Bing",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🥽 OpenAI",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "👨🏿‍💻 GitHub",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🎮 Game",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🌟 Game-Accelerator",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🐬 OneDrive",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🍁 Microsoft",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🎧 Spotify",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "❄️ TikTok",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🪐 Telegram",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "📺 Netflix",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "✈️ Speedtest",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "💳 PayPal",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🍎 Apple",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🐟 FISH",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🐉 HK",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇭🇰|HK|hk|香港|港|HongKong"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🌸 JP",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇯🇵|JP|jp|日本|日|Japan"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "☕ TW",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇹🇼|TW|tw|台湾|台|Taiwan"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🦁 SG",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇸🇬|SG|sg|新加坡|新|Singapore"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🤏 KR",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇰🇷|KR|kr|韩国|韩|South Korea|Korea"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🦅 US",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇺🇸|US|us|美国|美|UnitedStates"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "👑 UK",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇬🇧|UK|uk|英国|英|UnitedKingdom"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🗼 FR",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇫🇷|FR|fr|法国|法|France"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "🍻 DE",
+            "type": "urltest",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇩🇪|DE|de|GE|ge|德国|德|Germany"
+                    ]
+                }
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false
+        },
+        {
+            "tag": "GLOBAL",
+            "type": "selector",
+            "outbounds": [
+                "🐉 HK",
+                "🌸 JP",
+                "☕ TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "👑 UK",
+                "🗼 FR",
+                "🍻 DE",
+                "🐸 MANUAL SWITCH",
+                "🚀 NODE SELECTION",
+                "♻️ AUTOMATIC SELECTION",
+                "🎯 GLOBAL DIRECT"
+            ]
+        },
+        {
+            "tag": "🎯 GLOBAL DIRECT",
+            "type": "direct"
+        },
+        {
+            "tag": "dns-out",
+            "type": "dns"
+        }
+    ],
+    "route": {
+        "auto_detect_interface": true,
+        "final": "🚀 NODE SELECTION",
+        "rules": [
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "outbound": "dns-out"
+            },
+            {
+                "clash_mode": "direct",
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "GLOBAL"
+            },
+            {
+                "domain": [
+                    "clash.razord.top",
+                    "yacd.metacubex.one",
+                    "yacd.haishan.me",
+                    "d.metacubex.one"
+                ],
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "rule_set": "geosite-apple@cn",
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "rule_set": "geosite-apple",
+                "outbound": "🍎 Apple"
+            },
+            {
+                "rule_set": [
+                    "geosite-bilibili",
+                    "geosite-bilibili2",
+                    "geosite-bilibili-game"
+                ],
+                "outbound": "👻 Bilibili"
+            },
+            {
+                "rule_set": "geosite-github",
+                "outbound": "👨🏿‍💻 GitHub"
+            },
+            {
+                "rule_set": "geosite-openai",
+                "outbound": "🥽 OpenAI"
+            },
+            {
+                "rule_set": "geosite-youtube",
+                "outbound": "🎃 YouTube"
+            },
+            {
+                "rule_set": "geosite-google",
+                "outbound": "🌌 Google"
+            },
+            {
+                "rule_set": "geosite-bing",
+                "outbound": "🌀 Bing"
+            },
+            {
+                "rule_set": "geosite-microsoft",
+                "outbound": "🍁 Microsoft"
+            },
+            {
+                "rule_set": "geosite-tiktok",
+                "outbound": "❄️ TikTok"
+            },
+            {
+                "rule_set": [
+                    "geosite-steam@cn",
+                    "geosite-category-games@cn",
+                    "geosite-category-game-accelerator-cn"
+                ],
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "rule_set": "geosite-speedtest",
+                "outbound": "✈️ Speedtest"
+            },
+            {
+                "rule_set": "geosite-telegram",
+                "outbound": "🪐 Telegram"
+            },
+            {
+                "rule_set": "geosite-netflix",
+                "outbound": "📺 Netflix"
+            },
+            {
+                "rule_set": "geosite-paypal",
+                "outbound": "💳 PayPal"
+            },
+            {
+                "rule_set": "geosite-spotify",
+                "outbound": "🎧 Spotify"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "outbound": "🚀 NODE SELECTION"
+            },
+            {
+                "rule_set": "geolocation-cn",
+                "outbound": "🎯 GLOBAL DIRECT"
+            },
+            {
+                "rule_set": "geoip-google",
+                "outbound": "🌌 Google"
+            },
+            {
+                "rule_set": "geoip-telegram",
+                "outbound": "🪐 Telegram"
+            },
+            {
+                "rule_set": "geoip-netflix",
+                "outbound": "📺 Netflix"
+            },
+            {
+                "rule_set": "geoip-cn",
+                "outbound": "🎯 GLOBAL DIRECT"
+            }
+        ]
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9090",
+            "external_ui": "ui",
+            "secret": "",
+            "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+            "external_ui_download_detour": "🎯 GLOBAL DIRECT",
+            "default_mode": "rule"
+        }
+    }
+}
