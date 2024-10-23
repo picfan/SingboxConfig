@@ -104,8 +104,8 @@
             "tag": "OpenAI",
             "type": "selector",
             "outbounds": [
-                "TaiWan",
                 "Singapore",
+                "TaiWan",
                 "Japan",
                 "America",
                 "Others"
@@ -137,36 +137,13 @@
             ]
         },
         {
-            "tag": "Twitter",
-            "type": "selector",
-            "outbounds": [
-                "HongKong",
-                "TaiWan",
-                "Singapore",
-                "Japan",
-                "America",
-                "Others"
-            ]
-        },
-        {
-            "tag": "Facebook",
-            "type": "selector",
-            "outbounds": [
-                "HongKong",
-                "TaiWan",
-                "Singapore",
-                "Japan",
-                "America",
-                "Others"
-            ]
-        },
-        {
             "tag": "BiliBili",
             "type": "selector",
             "outbounds": [
                 "direct",
                 "HongKong",
-                "TaiWan"
+                "TaiWan",
+                "Japan"
             ]
         },
         {
@@ -478,7 +455,8 @@
                     "geosite-youtube",
                     "geoip-google",
                     "geosite-google",
-                    "geosite-github"
+                    "geosite-github",
+                    "geosite-bing"
                 ],
                 "outbound": "Google"
             },
@@ -491,20 +469,10 @@
             },
             {
                 "rule_set": [
-                    "geoip-twitter",
-                    "geosite-twitter"
+                    "geosite-bilibili",
+                    "geosite-bilibili2",
+                    "geosite-bilibili-game"
                 ],
-                "outbound": "Twitter"
-            },
-            {
-                "rule_set": [
-                    "geoip-facebook",
-                    "geosite-facebook"
-                ],
-                "outbound": "Facebook"
-            },
-            {
-                "rule_set": "geosite-bilibili",
                 "outbound": "BiliBili"
             },
             {
@@ -541,6 +509,10 @@
             {
                 "rule_set": "geosite-microsoft",
                 "outbound": "Microsoft"
+            },
+            {
+                "rule_set": "geosite-steam@cn",
+                "outbound": "China"
             },
             {
                 "rule_set": [
@@ -605,6 +577,34 @@
                 "download_detour": "direct"
             },
             {
+                "tag": "geosite-bing",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bing.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-bilibili",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-bilibili2",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili2.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-bilibili-game",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili-game.srs",
+                "download_detour": "direct"
+            },
+            {
                 "tag": "geosite-github",
                 "type": "remote",
                 "format": "binary",
@@ -623,41 +623,6 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs",
-                "download_detour": "direct"
-            },
-            {
-                "tag": "geoip-twitter",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
-                "download_detour": "direct"
-            },
-            {
-                "tag": "geosite-twitter",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
-                "download_detour": "direct"
-            },
-            {
-                "tag": "geoip-facebook",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
-                "download_detour": "direct"
-            },
-            {
-                "tag": "geosite-facebook",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
-                "download_detour": "direct"
-            },
-            {
-                "tag": "geosite-bilibili",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
                 "download_detour": "direct"
             },
             {
@@ -728,6 +693,13 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-steam@cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam@cn.srs",
                 "download_detour": "direct"
             },
             {
