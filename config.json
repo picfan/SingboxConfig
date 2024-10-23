@@ -85,17 +85,9 @@
             "auto_route": true,
             "strict_route": true,
             "sniff": true,
+            "sniff_override_destination": false,
             "endpoint_independent_nat": false,
-            "stack": "mixed",
-            "platform": {
-                "http_proxy": {
-                    "enabled": false,
-                    "server": "127.0.0.1",
-                    "server_port": 8080,
-                    "bypass_domain": [],
-                    "match_domain": []
-                }
-            }
+            "stack": "mixed"
         }
     ],
     "outbounds": [
@@ -103,50 +95,45 @@
             "tag": "🚀 NODE SELECTION",
             "type": "selector",
             "outbounds": [
-                "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🐉 HK",
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🐸 MANUAL SWITCH",
                 "🎯 GLOBAL DIRECT"
             ]
-        },
-        {
-            "tag": "♻️ AUTOMATIC SELECTION",
-            "type": "urltest",
-            "outbounds": [
-                "{all}"
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interrupt_exist_connections": false
         },
         {
             "tag": "🐸 MANUAL SWITCH",
             "type": "selector",
             "outbounds": [
                 "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "网站|地址|剩余|过期|时间|有效"
+                    ]
+                }
             ]
         },
         {
             "tag": "👻 Bilibili",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
                 "🐉 HK",
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -159,12 +146,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -177,12 +162,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -195,12 +178,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -208,17 +189,15 @@
             "tag": "🥽 OpenAI",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
+                "🦁 SG",
                 "🐉 HK",
                 "🌸 JP",
                 "☕ TW",
-                "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -231,12 +210,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -249,48 +226,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
-                "🎯 GLOBAL DIRECT"
-            ]
-        },
-        {
-            "tag": "🌟 Game-Accelerator",
-            "type": "selector",
-            "outbounds": [
-                "🚀 NODE SELECTION",
-                "🐉 HK",
-                "🌸 JP",
-                "☕ TW",
-                "🦁 SG",
-                "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
-                "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
-                "🎯 GLOBAL DIRECT"
-            ]
-        },
-        {
-            "tag": "🐬 OneDrive",
-            "type": "selector",
-            "outbounds": [
-                "🚀 NODE SELECTION",
-                "🐉 HK",
-                "🌸 JP",
-                "☕ TW",
-                "🦁 SG",
-                "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
-                "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -303,12 +242,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -316,17 +253,15 @@
             "tag": "🎧 Spotify",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
-                "🐉 HK",
                 "🌸 JP",
+                "🐉 HK",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -334,17 +269,15 @@
             "tag": "❄️ TikTok",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
-                "🐉 HK",
                 "🌸 JP",
+                "🐉 HK",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -357,12 +290,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -370,17 +301,15 @@
             "tag": "📺 Netflix",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
+                "🦁 SG",
                 "🐉 HK",
                 "🌸 JP",
                 "☕ TW",
-                "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -393,12 +322,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -411,12 +338,10 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -424,17 +349,15 @@
             "tag": "🍎 Apple",
             "type": "selector",
             "outbounds": [
-                "🚀 NODE SELECTION",
-                "🐉 HK",
                 "🌸 JP",
+                "🐉 HK",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
@@ -447,18 +370,21 @@
                 "🌸 JP",
                 "☕ TW",
                 "🦁 SG",
+                "🤏 KR",
                 "🦅 US",
-                "👑 UK",
-                "🗼 FR",
-                "🍻 DE",
+                "🍻 Others",
                 "🐸 MANUAL SWITCH",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
         {
             "tag": "🐉 HK",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -469,16 +395,16 @@
                         "🇭🇰|HK|hk|香港|港|HongKong"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "🌸 JP",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -489,16 +415,16 @@
                         "🇯🇵|JP|jp|日本|日|Japan"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "☕ TW",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -506,19 +432,19 @@
                 {
                     "action": "include",
                     "keywords": [
-                        "🇹🇼|TW|tw|台湾|台|Taiwan"
+                        "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "🦁 SG",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -526,19 +452,19 @@
                 {
                     "action": "include",
                     "keywords": [
-                        "🇸🇬|SG|sg|新加坡|新|Singapore"
+                        "🇸🇬|SG|sg|新加坡|狮|Singapore"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "🤏 KR",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -549,16 +475,16 @@
                         "🇰🇷|KR|kr|韩国|韩|South Korea|Korea"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "🦅 US",
             "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
             "outbounds": [
                 "{all}"
             ],
@@ -566,75 +492,25 @@
                 {
                     "action": "include",
                     "keywords": [
-                        "🇺🇸|US|us|美国|美|UnitedStates"
+                        "🇺🇸|US|us|美国|美|United States"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
-            "tag": "👑 UK",
-            "type": "urltest",
+            "tag": "🍻 Others",
+            "type": "selector",
             "outbounds": [
                 "{all}"
             ],
             "filter": [
                 {
-                    "action": "include",
+                    "action": "exclude",
                     "keywords": [
-                        "🇬🇧|UK|uk|英国|英|UnitedKingdom"
+                        "🇭🇰|HK|hk|香港|香|🇹🇼|TW|tw|台湾|台|🇸🇬|SG|sg|新加坡|狮|🇯🇵|JP|jp|日本|日|🇺🇸|US|us|美国|美|🇰🇷|KR|kr|韩国|韩|South Korea|Korea"
                     ]
                 }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
-        },
-        {
-            "tag": "🗼 FR",
-            "type": "urltest",
-            "outbounds": [
-                "{all}"
-            ],
-            "filter": [
-                {
-                    "action": "include",
-                    "keywords": [
-                        "🇫🇷|FR|fr|法国|法|France"
-                    ]
-                }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
-        },
-        {
-            "tag": "🍻 DE",
-            "type": "urltest",
-            "outbounds": [
-                "{all}"
-            ],
-            "filter": [
-                {
-                    "action": "include",
-                    "keywords": [
-                        "🇩🇪|DE|de|GE|ge|德国|德|Germany"
-                    ]
-                }
-            ],
-            "url": "https://www.gstatic.com/generate_204",
-            "interval": "3m",
-            "tolerance": 50,
-            "idle_timeout": "30m",
-            "interrupt_exist_connections": false
+            ]
         },
         {
             "tag": "GLOBAL",
@@ -651,7 +527,6 @@
                 "🍻 DE",
                 "🐸 MANUAL SWITCH",
                 "🚀 NODE SELECTION",
-                "♻️ AUTOMATIC SELECTION",
                 "🎯 GLOBAL DIRECT"
             ]
         },
