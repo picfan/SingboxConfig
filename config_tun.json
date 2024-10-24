@@ -595,11 +595,10 @@
                 "outbound": "🌌 Google"
             },
             {
-                "rule_set": "geosite-bing",
-                "outbound": "🌀 Bing"
-            },
-            {
-                "rule_set": "geosite-microsoft",
+                "rule_set": [
+                    "geosite-microsoft",
+                    "geosite-bing"
+                ],
                 "outbound": "🍁 Microsoft"
             },
             {
