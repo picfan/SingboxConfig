@@ -1,6 +1,5 @@
 {
     "log": {
-        "disabled": false,
         "level": "info",
         "timestamp": true
     },
@@ -8,38 +7,43 @@
         "servers": [
             {
                 "tag": "dns_proxy",
-                "address": "tls://1.1.1.1",
-                "address_resolver": "dns_resolver"
+                "address": "https://1.1.1.1/dns-query",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "dns_direct",
-                "address": "h3://dns.alidns.com/dns-query",
+                "address": "https://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
-                "detour": "DIRECT"
-            },
-            {
-                "tag": "dns_fakeip",
-                "address": "fakeip"
+                "strategy": "ipv4_only",
+                "detour": "☄️ DIRECT"
             },
             {
                 "tag": "dns_resolver",
                 "address": "223.5.5.5",
-                "detour": "DIRECT"
+                "detour": "☄️ DIRECT"
             },
             {
-                "tag": "block",
+                "tag": "dns_success",
                 "address": "rcode://success"
+            },
+            {
+                "tag": "dns_refused",
+                "address": "rcode://refused"
+            },
+            {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
             }
         ],
         "rules": [
             {
-                "outbound": [
-                    "any"
-                ],
+                "outbound": "any",
                 "server": "dns_resolver"
             },
             {
-                "ruleset": "geosite-geolocation-!cn",
+                "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
                     "A",
                     "AAAA"
@@ -47,17 +51,29 @@
                 "server": "dns_fakeip"
             },
             {
-                "geosite": [
-                    "geolocation-!cn"
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "CNAME"
                 ],
                 "server": "dns_proxy"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA",
+                    "CNAME"
+                ],
+                "invert": true,
+                "server": "dns_refused",
+                "disable_cache": true
             }
         ],
-        "final": "dns_proxy",
+        "final": "dns_direct",
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
-            "inet4_range": "198.18.0.0/15"
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
         }
     },
     "route": {
