@@ -1,5 +1,6 @@
 {
     "log": {
+        "disabled": false,
         "level": "info",
         "timestamp": true
     },
@@ -7,43 +8,38 @@
         "servers": [
             {
                 "tag": "dns_proxy",
-                "address": "https://1.1.1.1/dns-query",
-                "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
-                "detour": "🚀 NODE SELECTION"
+                "address": "tls://1.1.1.1",
+                "address_resolver": "dns_resolver"
             },
             {
                 "tag": "dns_direct",
-                "address": "https://dns.alidns.com/dns-query",
+                "address": "h3://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
-                "detour": "☄️ DIRECT"
-            },
-            {
-                "tag": "dns_resolver",
-                "address": "223.5.5.5",
-                "detour": "☄️ DIRECT"
-            },
-            {
-                "tag": "dns_success",
-                "address": "rcode://success"
-            },
-            {
-                "tag": "dns_refused",
-                "address": "rcode://refused"
+                "detour": "DIRECT"
             },
             {
                 "tag": "dns_fakeip",
                 "address": "fakeip"
+            },
+            {
+                "tag": "dns_resolver",
+                "address": "223.5.5.5",
+                "detour": "DIRECT"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
             }
         ],
         "rules": [
             {
-                "outbound": "any",
+                "outbound": [
+                    "any"
+                ],
                 "server": "dns_resolver"
             },
             {
-                "rule_set": "geosite-geolocation-!cn",
+                "ruleset": "geosite-geolocation-!cn",
                 "query_type": [
                     "A",
                     "AAAA"
@@ -51,29 +47,17 @@
                 "server": "dns_fakeip"
             },
             {
-                "rule_set": "geosite-geolocation-!cn",
-                "query_type": [
-                    "CNAME"
+                "geosite": [
+                    "geolocation-!cn"
                 ],
                 "server": "dns_proxy"
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA",
-                    "CNAME"
-                ],
-                "invert": true,
-                "server": "dns_refused",
-                "disable_cache": true
             }
         ],
         "final": "dns_proxy",
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
-            "inet4_range": "198.18.0.0/15",
-            "inet6_range": "fc00::/18"
+            "inet4_range": "198.18.0.0/15"
         }
     },
     "route": {
@@ -82,190 +66,190 @@
                 "tag": "geosite-apple@cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple@cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-apple",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-bilibili",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-bilibili2",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili2.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili2.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-bilibili-game",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili-game.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili-game.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-github",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-openai",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/openai.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/openai.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-youtube",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-google",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-bing",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bing.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bing.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-microsoft",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/microsoft.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/microsoft.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-tiktok",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/tiktok.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/tiktok.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-steam@cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/steam@cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/steam@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-category-games@cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games@cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-category-games",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-category-game-accelerator-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-game-accelerator-cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-game-accelerator-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-speedtest",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/speedtest.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/speedtest.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-telegram",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-netflix",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/netflix.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/netflix.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-paypal",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/paypal.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/paypal.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-spotify",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geosite-geolocation-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geoip-google",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-google.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-google.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geoip-telegram",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-telegram.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-telegram.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geoip-netflix",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-netflix.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-netflix.srs",
+                "download_detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "geoip-cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-                "download_detour": "☄️ DIRECT"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
             }
         ],
         "rules": [
@@ -395,16 +379,19 @@
     },
     "inbounds": [
         {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        },
+        {
             "type": "tun",
             "tag": "tun-in",
-            "inet4_address": "172.16.0.1/30",
-            "inet6_address": "fd00::1/126",
-            "mtu": 1492,
+            "inet4_address": "172.19.0.1/30",
             "auto_route": true,
             "strict_route": true,
-            "stack": "system",
-            "sniff": true,
-            "sniff_override_destination": false
+            "stack": "mixed",
+            "sniff": true
         }
     ],
     "outbounds": [
@@ -414,7 +401,7 @@
         },
         {
             "type": "block",
-            "tag": "block"
+            "tag": "🚫 REJECT"
         },
         {
             "type": "dns",
