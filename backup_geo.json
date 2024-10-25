@@ -64,197 +64,6 @@
         }
     },
     "route": {
-        "rule_set": [
-            {
-                "tag": "geosite-apple@cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple@cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-apple",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-bilibili",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-bilibili2",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili2.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-bilibili-game",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili-game.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-github",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-openai",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-openai.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-youtube",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-google",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-bing",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bing.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-microsoft",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-tiktok",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tiktok.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-steam@cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-steam@cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-category-games@cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-games@cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-category-games",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-games.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-category-game-accelerator-cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-game-accelerator-cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-speedtest",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-speedtest.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-telegram",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-netflix",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-netflix.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-paypal",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-paypal.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-spotify",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-spotify.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-geolocation-!cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-!cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geosite-geolocation-cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geoip-google",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-google.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geoip-telegram",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-telegram.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geoip-netflix",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-netflix.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            },
-            {
-                "tag": "geoip-cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-                "download_detour": "♻️ AUTOMATIC SELECTION"
-            }
-        ],
         "rules": [
             {
                 "type": "logical",
@@ -274,106 +83,106 @@
                 "outbound": "☄️ DIRECT"
             },
             {
-                "rule_set": "geosite-apple@cn",
+                "geosite": "apple@cn",
                 "outbound": "☄️ DIRECT"
             },
             {
-                "rule_set": "geosite-apple",
+                "geosite": "apple",
                 "outbound": "🍎 Apple"
             },
             {
-                "rule_set": [
-                    "geosite-bilibili",
-                    "geosite-bilibili2",
-                    "geosite-bilibili-game"
+                "geosite": [
+                    "bilibili",
+                    "bilibili2",
+                    "bilibili-game"
                 ],
                 "outbound": "👻 Bilibili"
             },
             {
-                "rule_set": "geosite-github",
+                "geosite": "github",
                 "outbound": "👨🏿‍💻 GitHub"
             },
             {
-                "rule_set": "geosite-openai",
+                "geosite": "openai",
                 "outbound": "🥽 OpenAI"
             },
             {
-                "rule_set": "geosite-youtube",
+                "geosite": "youtube",
                 "outbound": "🎃 YouTube"
             },
             {
-                "rule_set": "geosite-google",
+                "geosite": "google",
                 "outbound": "🌌 Google"
             },
             {
-                "rule_set": "geosite-bing",
+                "geosite": "bing",
                 "outbound": "🌀 Bing"
             },
             {
-                "rule_set": "geosite-microsoft",
+                "geosite": "microsoft",
                 "outbound": "🍁 Microsoft"
             },
             {
-                "rule_set": "geosite-tiktok",
+                "geosite": "tiktok",
                 "outbound": "❄️ TikTok"
             },
             {
-                "rule_set": [
-                    "geosite-steam@cn",
-                    "geosite-category-games@cn"
+                "geosite": [
+                    "steam@cn",
+                    "category-games@cn"
                 ],
                 "outbound": "☄️ DIRECT"
             },
             {
-                "rule_set": "geosite-category-games",
+                "geosite": "category-games",
                 "outbound": "🎮 Game"
             },
             {
-                "rule_set": "geosite-category-game-accelerator-cn",
+                "geosite": "category-game-accelerator-cn",
                 "outbound": "🌟 Game-Accelerator"
             },
             {
-                "rule_set": "geosite-speedtest",
+                "geosite": "speedtest",
                 "outbound": "✈️ Speedtest"
             },
             {
-                "rule_set": "geosite-telegram",
+                "geosite": "telegram",
                 "outbound": "🪐 Telegram"
             },
             {
-                "rule_set": "geosite-netflix",
+                "geosite": "netflix",
                 "outbound": "📺 Netflix"
             },
             {
-                "rule_set": "geosite-paypal",
+                "geosite": "paypal",
                 "outbound": "💳 PayPal"
             },
             {
-                "rule_set": "geosite-spotify",
+                "geosite": "spotify",
                 "outbound": "🎧 Spotify"
             },
             {
-                "rule_set": "geosite-geolocation-!cn",
+                "geosite": "geolocation-!cn",
                 "outbound": "🚀 NODE SELECTION"
             },
             {
-                "rule_set": "geosite-geolocation-cn",
+                "geosite": "geolocation-cn",
                 "outbound": "☄️ DIRECT"
             },
             {
-                "rule_set": "geoip-google",
+                "geoip": "google",
                 "outbound": "🌌 Google"
             },
             {
-                "rule_set": "geoip-telegram",
+                "geoip": "telegram",
                 "outbound": "🪐 Telegram"
             },
             {
-                "rule_set": "geoip-netflix",
+                "geoip": "netflix",
                 "outbound": "📺 Netflix"
             },
             {
-                "rule_set": "geoip-cn",
+                "geoip": "cn",
                 "outbound": "☄️ DIRECT"
             }
         ],
@@ -390,20 +199,7 @@
         {
             "type": "tun",
             "tag": "tun-in",
-            "address": [
-                "172.19.0.1/30",
-                "fdfe:dcba:9876::1/126"
-            ],
-            "route_address": [
-                "0.0.0.0/1",
-                "128.0.0.0/1",
-                "::/1",
-                "8000::/1"
-            ],
-            "route_exclude_address": [
-                "192.168.0.0/16",
-                "fc00::/7"
-            ],
+            "inet4_address": "172.19.0.1/30",
             "auto_route": true,
             "strict_route": true,
             "stack": "mixed",
