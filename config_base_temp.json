@@ -1,0 +1,852 @@
+{
+    "log": {
+        "level": "info",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_proxy",
+                "address": "https://1.1.1.1/dns-query",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "dns_direct",
+                "address": "https://dns.alidns.com/dns-query",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "☄️ DIRECT"
+            },
+            {
+                "tag": "dns_resolver",
+                "address": "223.5.5.5",
+                "detour": "☄️ DIRECT"
+            },
+            {
+                "tag": "dns_success",
+                "address": "rcode://success"
+            },
+            {
+                "tag": "dns_refused",
+                "address": "rcode://refused"
+            },
+            {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "dns_resolver"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "dns_fakeip"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "CNAME"
+                ],
+                "server": "dns_proxy"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA",
+                    "CNAME"
+                ],
+                "invert": true,
+                "server": "dns_refused",
+                "disable_cache": true
+            }
+        ],
+        "final": "dns_proxy",
+        "independent_cache": true,
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
+        }
+    },
+    "route": {
+        "rule_set": [
+            {
+                "tag": "geosite-apple@cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-apple",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-bilibili",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-bilibili2",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili2.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-bilibili-game",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili-game.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-github",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-openai",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/openai.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-youtube",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-google",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-bing",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bing.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-microsoft",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/microsoft.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-tiktok",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/tiktok.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-steam@cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/steam@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-category-games@cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games@cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-category-games",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-category-game-accelerator-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-game-accelerator-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-speedtest",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/speedtest.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-telegram",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-netflix",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/netflix.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-paypal",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/paypal.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-spotify",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-geolocation-!cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geosite-geolocation-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geoip-google",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-google.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geoip-telegram",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-telegram.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geoip-netflix",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-netflix.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            },
+            {
+                "tag": "geoip-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+                "download_detour": "🚀 NODE SELECTION"
+            }
+        ],
+        "rules": [
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "outbound": "dns-out"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "☄️ DIRECT"
+            },
+            {
+                "rule_set": "geosite-apple@cn",
+                "outbound": "☄️ DIRECT"
+            },
+            {
+                "rule_set": "geosite-apple",
+                "outbound": "🍎 Apple"
+            },
+            {
+                "rule_set": [
+                    "geosite-bilibili",
+                    "geosite-bilibili2",
+                    "geosite-bilibili-game"
+                ],
+                "outbound": "👻 Bilibili"
+            },
+            {
+                "rule_set": "geosite-github",
+                "outbound": "👨🏿‍💻 GitHub"
+            },
+            {
+                "rule_set": "geosite-openai",
+                "outbound": "🥽 OpenAI"
+            },
+            {
+                "rule_set": "geosite-youtube",
+                "outbound": "🎃 YouTube"
+            },
+            {
+                "rule_set": "geosite-google",
+                "outbound": "🌌 Google"
+            },
+            {
+                "rule_set": "geosite-bing",
+                "outbound": "🌀 Bing"
+            },
+            {
+                "rule_set": "geosite-microsoft",
+                "outbound": "🍁 Microsoft"
+            },
+            {
+                "rule_set": "geosite-tiktok",
+                "outbound": "❄️ TikTok"
+            },
+            {
+                "rule_set": [
+                    "geosite-steam@cn",
+                    "geosite-category-games@cn"
+                ],
+                "outbound": "☄️ DIRECT"
+            },
+            {
+                "rule_set": "geosite-category-games",
+                "outbound": "🎮 Game"
+            },
+            {
+                "rule_set": "geosite-category-game-accelerator-cn",
+                "outbound": "🌟 Game-Accelerator"
+            },
+            {
+                "rule_set": "geosite-speedtest",
+                "outbound": "✈️ Speedtest"
+            },
+            {
+                "rule_set": "geosite-telegram",
+                "outbound": "🪐 Telegram"
+            },
+            {
+                "rule_set": "geosite-netflix",
+                "outbound": "📺 Netflix"
+            },
+            {
+                "rule_set": "geosite-paypal",
+                "outbound": "💳 PayPal"
+            },
+            {
+                "rule_set": "geosite-spotify",
+                "outbound": "🎧 Spotify"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "outbound": "🚀 NODE SELECTION"
+            },
+            {
+                "rule_set": "geosite-geolocation-cn",
+                "outbound": "☄️ DIRECT"
+            },
+            {
+                "rule_set": "geoip-google",
+                "outbound": "🌌 Google"
+            },
+            {
+                "rule_set": "geoip-telegram",
+                "outbound": "🪐 Telegram"
+            },
+            {
+                "rule_set": "geoip-netflix",
+                "outbound": "📺 Netflix"
+            },
+            {
+                "rule_set": "geoip-cn",
+                "outbound": "☄️ DIRECT"
+            }
+        ],
+        "final": "🚀 NODE SELECTION",
+        "auto_detect_interface": true
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "inet4_address": "172.16.0.1/30",
+            "inet6_address": "fd00::1/126",
+            "mtu": 1492,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "system",
+            "sniff": true,
+            "sniff_override_destination": false
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "☄️ DIRECT"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        },
+        {
+            "tag": "🚀 NODE SELECTION",
+            "type": "selector",
+            "outbounds": [
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🎯 MANUAL SWITCH",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "网站|地址|剩余|过期|时间|有效"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🍎 Apple",
+            "type": "selector",
+            "outbounds": [
+                "🌸 JP",
+                "🐉 HK",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "👻 Bilibili",
+            "type": "selector",
+            "outbounds": [
+                "🌸 JP",
+                "🐉 HK",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "👨🏿‍💻 GitHub",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🥽 OpenAI",
+            "type": "selector",
+            "outbounds": [
+                "🦁 SG",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🎃 YouTube",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🌌 Google",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🌀 Bing",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🍁 Microsoft",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "❄️ TikTok",
+            "type": "selector",
+            "outbounds": [
+                "🌸 JP",
+                "🐉 HK",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🎮 Game",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🌟 Game-Accelerator",
+            "type": "selector",
+            "outbounds": [
+                "☄️ DIRECT",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH"
+            ]
+        },
+        {
+            "tag": "✈️ Speedtest",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🪐 Telegram",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "📺 Netflix",
+            "type": "selector",
+            "outbounds": [
+                "🦁 SG",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "💳 PayPal",
+            "type": "selector",
+            "outbounds": [
+                "🚀 NODE SELECTION",
+                "🐉 HK",
+                "🌸 JP",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🎧 Spotify",
+            "type": "selector",
+            "outbounds": [
+                "🌸 JP",
+                "🐉 HK",
+                "🐸 TW",
+                "🦁 SG",
+                "🤏 KR",
+                "🦅 US",
+                "🍻 Others",
+                "🚀 NODE SELECTION",
+                "🎯 MANUAL SWITCH",
+                "☄️ DIRECT"
+            ]
+        },
+        {
+            "tag": "🐉 HK",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇭🇰|HK|hk|香港|港|HongKong"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🌸 JP",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇯🇵|JP|jp|日本|日|Japan"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🐸 TW",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🦁 SG",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇸🇬|SG|sg|新加坡|狮|Singapore"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🤏 KR",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇰🇷|KR|kr|韩国|韩|South Korea|Korea"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🦅 US",
+            "type": "urltest",
+            "url": "https://www.gstatic.com/generate_204",
+            "interval": "3m",
+            "tolerance": 50,
+            "idle_timeout": "30m",
+            "interrupt_exist_connections": false,
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇺🇸|US|us|美国|美|United States"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🍻 Others",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "🇭🇰|HK|hk|香港|香|🇹🇼|TW|tw|台湾|台|🇸🇬|SG|sg|新加坡|狮|🇯🇵|JP|jp|日本|日|🇺🇸|US|us|美国|美|🇰🇷|KR|kr|韩国|韩|South Korea|Korea"
+                    ]
+                }
+            ]
+        }
+    ],
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": true,
+            "store_rdrc": true
+        }
+    }
+}
