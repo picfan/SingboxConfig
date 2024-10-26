@@ -1,6 +1,5 @@
 {
     "log": {
-        "disabled": false,
         "level": "info",
         "timestamp": true
     },
@@ -8,18 +7,17 @@
         "servers": [
             {
                 "tag": "dns_proxy",
-                "address": "tls://1.1.1.1",
-                "address_resolver": "dns_resolver"
+                "address": "https://1.1.1.1/dns-query",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "dns_direct",
-                "address": "h3://dns.alidns.com/dns-query",
+                "address": "https://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
                 "detour": "☄️ DIRECT"
-            },
-            {
-                "tag": "dns_fakeip",
-                "address": "fakeip"
             },
             {
                 "tag": "dns_resolver",
@@ -27,21 +25,22 @@
                 "detour": "☄️ DIRECT"
             },
             {
-                "tag": "block",
+                "tag": "dns_success",
                 "address": "rcode://success"
+            },
+            {
+                "tag": "dns_refused",
+                "address": "rcode://refused"
+            },
+            {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
             }
         ],
         "rules": [
             {
-                "outbound": [
-                    "any"
-                ],
+                "outbound": "any",
                 "server": "dns_resolver"
-            },
-            {
-                "rule_set": "geosite-category-ads-all",
-                "server": "dns_block",
-                "disable_cache": true
             },
             {
                 "rule_set": "geosite-geolocation-!cn",
@@ -53,15 +52,27 @@
             },
             {
                 "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "CNAME"
+                ],
                 "server": "dns_proxy"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA",
+                    "CNAME"
+                ],
+                "invert": true,
+                "server": "dns_refused",
+                "disable_cache": true
             }
         ],
         "final": "dns_direct",
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
-            "inet4_range": "198.18.0.0/15",
-            "inet6_range": "fc00::/18"
+            "inet4_range": "198.18.0.0/15"
         }
     },
     "ntp": {
@@ -400,13 +411,14 @@
             "type": "tun",
             "tag": "tun-in",
             "address": [
-                "172.18.0.1/30",
-                "fdfe:dcba:9876::1/126"
+                "172.16.0.1/30"
             ],
+            "mtu": 1492,
             "auto_route": true,
             "strict_route": true,
             "stack": "mixed",
-            "sniff": true
+            "sniff": true,
+            "sniff_override_destination": false
         }
     ],
     "outbounds": [
