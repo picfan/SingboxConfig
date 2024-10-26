@@ -36,7 +36,7 @@
                 "outbound": [
                     "any"
                 ],
-                "server": "dns_resolver"
+                "server": "dns_proxy"
             },
             {
                 "rule_set": "geosite-category-ads-all",
@@ -56,7 +56,7 @@
                 "server": "dns_proxy"
             }
         ],
-        "final": "dns_direct",
+        "final": "dns_proxy",
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
@@ -876,6 +876,14 @@
             "path": "cache.db",
             "store_fakeip": true,
             "store_rdrc": true
+        },
+        "clash_api": {
+            "external_controller": "0.0.0.0:9090",
+            "external_ui": "ui",
+            "secret": "",
+            "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+            "external_ui_download_detour": "☄️ DIRECT",
+            "default_mode": "rule"
         }
     }
 }
