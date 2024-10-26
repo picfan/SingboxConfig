@@ -1,5 +1,6 @@
 {
     "log": {
+        "disabled": false,
         "level": "info",
         "timestamp": true
     },
@@ -7,17 +8,19 @@
         "servers": [
             {
                 "tag": "dns_proxy",
-                "address": "tls://8.8.8.8",
+                "address": "tls://1.1.1.1",
                 "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
                 "detour": "🚀 NODE SELECTION"
             },
             {
                 "tag": "dns_direct",
-                "address": "https://223.5.5.5/dns-query",
+                "address": "h3://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
                 "detour": "☄️ DIRECT"
+            },
+            {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
             },
             {
                 "tag": "dns_resolver",
@@ -25,21 +28,15 @@
                 "detour": "☄️ DIRECT"
             },
             {
-                "tag": "dns_success",
+                "tag": "block",
                 "address": "rcode://success"
-            },
-            {
-                "tag": "dns_refused",
-                "address": "rcode://refused"
-            },
-            {
-                "tag": "dns_fakeip",
-                "address": "fakeip"
             }
         ],
         "rules": [
             {
-                "outbound": "any",
+                "outbound": [
+                    "any"
+                ],
                 "server": "dns_resolver"
             },
             {
@@ -52,20 +49,7 @@
             },
             {
                 "rule_set": "geosite-geolocation-!cn",
-                "query_type": [
-                    "CNAME"
-                ],
                 "server": "dns_proxy"
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA",
-                    "CNAME"
-                ],
-                "invert": true,
-                "server": "dns_refused",
-                "disable_cache": true
             }
         ],
         "final": "dns_direct",
@@ -84,13 +68,6 @@
     },
     "route": {
         "rule_set": [
-            {
-                "tag": "geosite-category-ads-all",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
-                "download_detour": "☄️ DIRECT"
-            },
             {
                 "tag": "geosite-apple@cn",
                 "type": "remote",
@@ -383,6 +360,12 @@
                 "outbound": "🚀 NODE SELECTION"
             },
             {
+                "domain_keyword": [
+                    "kuromis"
+                ],
+                "outbound":"🚀 NODE SELECTION"
+            },
+            {
                 "rule_set": "geosite-geolocation-cn",
                 "outbound": "☄️ DIRECT"
             },
@@ -408,17 +391,19 @@
     },
     "inbounds": [
         {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        },
+        {
             "type": "tun",
             "tag": "tun-in",
-            "address": [
-                "172.18.0.1/30"
-            ],
-            "mtu": 1492,
+            "inet4_address": "172.19.0.1/30",
             "auto_route": true,
             "strict_route": true,
-            "stack": "system",
-            "sniff": true,
-            "sniff_override_destination": false
+            "stack": "mixed",
+            "sniff": true
         }
     ],
     "outbounds": [
