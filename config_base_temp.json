@@ -36,7 +36,7 @@
                 "outbound": [
                     "any"
                 ],
-                "server": "dns_proxy"
+                "server": "dns_resolver"
             },
             {
                 "rule_set": "geosite-category-ads-all",
@@ -56,7 +56,7 @@
                 "server": "dns_proxy"
             }
         ],
-        "final": "dns_proxy",
+        "final": "dns_direct",
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
