@@ -39,16 +39,12 @@
                 "server": "dns_resolver"
             },
             {
-                "geosite": [
-                    "category-ads-all"
-                ],
+                "rule_set": "geosite-category-ads-all",
                 "server": "dns_block",
                 "disable_cache": true
             },
             {
-                "geosite": [
-                    "geolocation-!cn"
-                ],
+                "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
                     "A",
                     "AAAA"
@@ -56,9 +52,7 @@
                 "server": "dns_fakeip"
             },
             {
-                "geosite": [
-                    "geolocation-!cn"
-                ],
+                "rule_set": "geosite-geolocation-!cn",
                 "server": "dns_proxy"
             }
         ],
