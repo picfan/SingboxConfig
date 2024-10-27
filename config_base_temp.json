@@ -72,8 +72,7 @@
         "independent_cache": true,
         "fakeip": {
             "enabled": true,
-            "inet4_range": "198.18.0.0/15",
-            "inet6_range": "fc00::/18"
+            "inet4_range": "198.18.0.0/15"
         }
     },
     "ntp": {
@@ -410,7 +409,7 @@
             "mtu": 1492,
             "auto_route": true,
             "strict_route": true,
-            "stack": "system",
+            "stack": "mixed",
             "sniff": true,
             "sniff_override_destination": false
         }
