@@ -7,14 +7,21 @@
         "servers": [
             {
                 "tag": "dns_proxy",
-                "address": "tls://8.8.8.8",
+                "address": "tls://1.1.1.1",
                 "address_resolver": "dns_resolver",
                 "strategy": "ipv4_only",
                 "detour": "🚀 NODE SELECTION"
             },
             {
+                "tag": "dns_proxy_bilibili",
+                "address": "tls://1.1.1.1",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "🌸 JP"
+            },
+            {
                 "tag": "dns_direct",
-                "address": "h3://223.5.5.5/dns-query",
+                "address": "223.5.5.5",
                 "address_resolver": "dns_resolver",
                 "strategy": "ipv4_only",
                 "detour": "☄️ DIRECT"
@@ -56,6 +63,14 @@
                     "CNAME"
                 ],
                 "server": "dns_proxy"
+            },
+            {
+                "rule_set": [
+                    "geosite-bilibili",
+                    "geosite-bilibili2",
+                    "geosite-bilibili-game"
+                ],
+                "server": "dns_proxy_bilibili"
             },
             {
                 "query_type": [
