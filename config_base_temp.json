@@ -70,7 +70,10 @@
                     "geosite-bilibili2",
                     "geosite-bilibili-game"
                 ],
-                "server": "dns_proxy_bilibili"
+                "domain_keyword": [
+                    "kuromis"
+                ],
+                "server": "dns_fakeip"
             },
             {
                 "query_type": [
