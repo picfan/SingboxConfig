@@ -13,13 +13,6 @@
                 "detour": "🚀 NODE SELECTION"
             },
             {
-                "tag": "dns_proxy_bilibili",
-                "address": "tls://1.1.1.1",
-                "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
-                "detour": "🌸 JP"
-            },
-            {
                 "tag": "dns_direct",
                 "address": "223.5.5.5",
                 "address_resolver": "dns_resolver",
@@ -50,22 +43,8 @@
                 "server": "dns_resolver"
             },
             {
-                "rule_set": "geosite-geolocation-!cn",
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "server": "dns_fakeip"
-            },
-            {
-                "rule_set": "geosite-geolocation-!cn",
-                "query_type": [
-                    "CNAME"
-                ],
-                "server": "dns_proxy"
-            },
-            {
                 "rule_set": [
+                    "geosite-geolocation-!cn",
                     "geosite-bilibili",
                     "geosite-bilibili2",
                     "geosite-bilibili-game"
@@ -73,7 +52,26 @@
                 "domain_keyword": [
                     "kuromis"
                 ],
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
                 "server": "dns_fakeip"
+            },
+            {
+                "rule_set": [
+                    "geosite-geolocation-!cn",
+                    "geosite-bilibili",
+                    "geosite-bilibili2",
+                    "geosite-bilibili-game"
+                ],
+                "domain_keyword": [
+                    "kuromis"
+                ],
+                "query_type": [
+                    "CNAME"
+                ],
+                "server": "dns_proxy"
             },
             {
                 "query_type": [
