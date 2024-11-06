@@ -13,12 +13,6 @@
                 "detour": "🚀 NODE SELECTION"
             },
             {
-                "tag": "dns_proxy_domestic",
-                "address": "tls://1.1.1.1",
-                "strategy": "ipv4_only",
-                "detour": "🌸 JP"
-            },
-            {
                 "tag": "dns_direct",
                 "address": "223.5.5.5",
                 "address_resolver": "dns_resolver",
@@ -72,7 +66,7 @@
                 "domain_keyword": [
                     "kuromis"
                 ],
-                "server": "dns_proxy_domestic"
+                "server": "dns_fakeip"
             },
             {
                 "query_type": [
