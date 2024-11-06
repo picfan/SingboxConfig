@@ -13,6 +13,13 @@
                 "detour": "🚀 NODE SELECTION"
             },
             {
+                "tag": "dns_proxy_domestic",
+                "address": "tls://8.8.8.8",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "🌸 JP"
+            },
+            {
                 "tag": "dns_direct",
                 "address": "h3://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
