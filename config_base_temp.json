@@ -59,8 +59,14 @@
                 "server": "dns_fakeip"
             },
             {
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "CNAME"
+                ],
+                "server": "dns_proxy"
+            },
+            {
                 "rule_set": [
-                    "geosite-geolocation-!cn",
                     "geosite-bilibili",
                     "geosite-bilibili2",
                     "geosite-bilibili-game"
@@ -71,7 +77,7 @@
                 "query_type": [
                     "CNAME"
                 ],
-                "server": "dns_proxy"
+                "server": "dns_proxy_domestic"
             },
             {
                 "query_type": [
